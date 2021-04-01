@@ -13,7 +13,6 @@ import {
 } from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import {replaceFavorites} from '../Redux/actions'
 
 export default function CardMovie ({movie, loading}) {
   const dispatch = useDispatch()
@@ -33,27 +32,8 @@ export default function CardMovie ({movie, loading}) {
     if(!check){
       setIsFav(false)
     }
-  }, [favorites,movie])
+  }, [movie])
 
-  const onClickFavorites = () => {
-    let newFavorites = [...favorites]
-    let check = false
-    for(let i=0 ; i<newFavorites.length ; i++){
-      if(newFavorites[i].id === movie.id){
-        newFavorites.splice(i,1)
-        check = true
-        break
-      }
-    }
-    if(!check){
-      newFavorites.push(movie)
-    }
-    setAddLoading(true)
-    dispatch(replaceFavorites(newFavorites))
-    setTimeout(() => {
-      setAddLoading(false)
-    }, 2000)
-  }
 
   return (
     <Card
@@ -96,53 +76,9 @@ export default function CardMovie ({movie, loading}) {
           }
         </Card.Description>
       </Card.Content>
-      <Card.Content extra>
-        <Button
-          icon='heart'
-          style={{color: isFav? 'red' : ''}}
-          onClick={() => {
-            onClickFavorites()
-          }}
-        />
-        <Link style={{float:'right', color: 'teal', marginTop: '15px'}} to={`/movie/${movie.id}`}>
-          details <span style={{verticalAlign: '-1.5px', marginLeft: '-3px'}}><Icon name='angle double right'/></span>
-        </Link>
-      </Card.Content>
       <Dimmer active={loading} inverted>
         <Loader inverted content='Loading' />
       </Dimmer>
-      {
-        isFav ? 
-        <Message
-          info
-          style={{
-            position: 'absolute',
-            top: addLoading ? '60%' : '70%',
-            left: '50%',
-            transform: 'translate(-50%,-50%)',
-            opacity: addLoading ? '1' : '0',
-            visibility: addLoading ? 'visible' : 'hidden',
-            transition: 'all .7s ease'
-          }}
-        >
-          <Message.Header>Added to Favorites</Message.Header>
-        </Message>
-        :
-        <Message
-          warning
-          style={{
-            position: 'absolute',
-            top: addLoading ? '60%' : '70%',
-            left: '50%',
-            transform: 'translate(-50%,-50%)',
-            opacity: addLoading ? '1' : '0',
-            visibility: addLoading ? 'visible' : 'hidden',
-            transition: 'all .7s ease'
-          }}
-        >
-          <Message.Header>Removed from Favorites</Message.Header>
-        </Message>
-      }
     </Card>
   )
 }

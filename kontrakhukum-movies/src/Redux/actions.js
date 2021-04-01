@@ -1,11 +1,4 @@
-
-export const addFavorites = (payload) => {
-    return {type: 'FAVORITES/ADD', payload}
-}
-
-export const replaceFavorites = (payload) => {
-    return {type: 'FAVORITES/REPLACE', payload}
-}
+const apiurl = 'https://kontrakhukummovies-server.herokuapp.com'
 
 export const replaceHomeList = (payload) => {
     return {type: 'HOME/REPLACE', payload}
@@ -15,7 +8,7 @@ export const loadMovies = (sort='', page, search='') => {
     return (dispatch) => {
         console.log('ini loadmovies')
         dispatch({type: 'HOME/LOADING'})
-        let url = `http://localhost:3001/movies?sort=${sort}&limit=5&page=${page}&search=${search}`
+        let url = `${apiurl}/movies?sort=${sort}&limit=5&page=${page}&search=${search}`
         fetch(url)
         .then(response => {
             // console.log(response.ok)

@@ -4,7 +4,7 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
 
 
-    const actors = ['Ben Affleck', 'Mila Jovovic', 'Kate Beckinsale', 'Brad Pitt']
+    const actors = ['Ben Affleck', 'Mila Jovovic', 'Gal Gadot', 'Denzel Washington', 'Jared Leto', 'Bruce Willis']
 
     const data = actors.map((item, index) => {
       return {
