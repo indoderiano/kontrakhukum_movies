@@ -4,7 +4,7 @@ const {Op} = require('sequelize')
 class ControllerMovies {
     static async read(req, res){
         console.log(req.query)
-        const {sort, limit, page, search} = req.query
+        const {sort, limit=5, page=1, search} = req.query
 
         let offset = (page-1)*5
 
