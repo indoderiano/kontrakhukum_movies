@@ -114,14 +114,14 @@ export default function Home () {
         />
         <Header
           as='h2'
-          content='Do whatever you want when you want to.'
           inverted
           style={{
             fontSize: true ? '1.5em' : '1.7em',
-            fontWeight: 'normal',
+            fontWeight: '100',
             marginTop: true ? '0.5em' : '1.5em',
           }}
-        />
+        >Technical Test By <span style={{fontWeight: '900', color:'orange'}}>Indo Halim</span></Header>
+        <p style={{margin: '30px 0'}}>Feature: Search, Sort By Rating, and Pagination</p>
         <Input
           icon={<Icon name='x' link onClick={() => {setSearch('')}} />}
           // iconPosition='right'

@@ -68,7 +68,9 @@ export default function CardMovie ({movie, loading}) {
           {
             movie.Actors.map((actor, index) => {
               return (
-                <Label key={index}>
+                <Label
+                  style={{margin: '0 .5em .5em 0'}}
+                  key={index}>
                   {actor.name}
                 </Label>
               )
